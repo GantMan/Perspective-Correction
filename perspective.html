@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>From Your Perspective - By Gant Laborde</title>
+    <meta charset="UTF-8" />
+  </head>
+
+  <body>
+    <a href="/"><- BACK</a>
+    <div>
+      <p>Image Options</p>
+      <button id="firstImg">1</button>
+      <button id="secondImg">2</button>
+      <button id="thirdImg">3</button>
+      <button id="fourthImg">4</button>
+      <button id="fifthImg">5</button>
+    </div>
+    <div style="position: relative;">
+      <img
+        id="card"
+        crossorigin="anonymous"
+        src="/1.jpg"
+        style="max-width: 99%;"
+      />
+      <canvas
+        id="drawContainer"
+        width="600"
+        height="600"
+        style="
+          border: 1px solid #333;
+          position: absolute;
+          left: 0;
+          cursor: crosshair;
+        "
+      ></canvas>
+    </div>
+    <canvas
+      id="zoomCanvas"
+      width="100"
+      height="100"
+      style="border: 1px solid red; position: absolute; visibility: hidden;"
+    ></canvas>
+    <button id="firstLine">Record First Edge</button>
+    <button id="secondLine">Record Second Edge</button>
+    <button id="processTransform">Process!</button>
+    <p id="statusBox"></p>
+    <canvas id="resultCanvas" width="600" height="600"> </canvas>
+    <div>
+      <img id="result" style="max-width: 60%; margin-top: 30%;" />
+    </div>
+    <script src="src/perspective.js"></script>
+  </body>
+</html>
