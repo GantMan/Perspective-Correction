@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Matrix 3D Css</title>
+    <meta charset="UTF-8" />
+  </head>
+
+  <body>
+    <a href="/"><- BACK</a>
+    <p>
+      How do we solve transforming an image to a position we want? We might need
+      to do something like this when we want to fix perspective on a particular
+      image.
+    </p>
+    <img src="transform.png" style="width: 100%;" />
+    <p>
+      By fixing the perspective of a rectangle inside a rectangular image, the
+      result becomes a trapezoidal image with a perfect rectangle inside. We
+      achieve this with an unknown transform that we must solve for.
+    </p>
+    <img src="system_of_equations.jpg" style="width: 100%;" />
+    <p>
+      There's no need to bring all 16 values into a system of equations. We know
+      the Z values will essentially be ignored when our 3D image is projected to
+      2D space.
+    </p>
+    <img src="make_h.jpg" style="width: 100%;" />
+    <p>
+      Additionally, there's an infinite number of solutions in 3D space. This is
+      because for any scaled value in <em>h<sub>8</sub></em> (d4), we could find
+      the points to translate to.
+    </p>
+    <img src="h8_1.jpg" style="width: 100%;" />
+    <p>
+      Since we are locking the transformation of <em>h<sub>8</sub></em> to one,
+      we will add a scaling factor <em>k</em> to the other side of the equation.
+    </p>
+    <p>
+      Technically, for a matrix to create a 3x1 output of every point the
+      transform matrix <em>H</em> should be applied on the left side. Once we
+      set <em>h<sub>8</sub></em> to 1 we find we're trying to solve for this:
+    </p>
+    <img src="full_formula.JPG" style="width: 100%;" />
+    <p>
+      After one level of row-reduction (for elimination of <em>k</em>), and then
+      placement into a full system of linear equations matrix, you end with:
+    </p>
+    <img src="final_8.jpg" style="width: 100%;" />
+    <p>
+      Unfortunately, we have a formula for <em>b</em> but we want a formula for
+      <em>H</em>. In normal algebra, we can divide both sides by <em>A</em>, but
+      this is linear algebra. There's no real way to divide a matrix by another,
+      so we multiply by the inverse matrix to solve for <em>H</em>.
+    </p>
+    <img src="solve_for_h.jpg" style="max-width: 90%;" />
+    <p>One last hiccup.  Finding A's inverse isn't considered numerically stable (the determinant of A could be zero causing division by zero!).  Also, finding the inverse of a matrix kinda sucks.  So we'll be using the <a href="https://en.wikipedia.org/wiki/Moore%E2%80%93Penrose_inverse" />Moore-Penrose</a> inverse.  Sometimes called A<sup>+</sup>.  If you're using a math library that does this for you, then don't worry.  If not, then this is how to do it.</p> 
+    <img src="pseudo_inverse.jpg" style="max-width: 90%;" />
+    <h3>TADAAAAAAA! 🎉🎉🎉</h3>
+    
+    <p>
+      Given 4 points original, and 4 points destination, you're able to perform a <a href="https://en.wikipedia.org/wiki/Direct_linear_transformation">direct linear transformation</a> with this formula.  Now you can fix the perspective.  Remember to properly place your 8 values back inside the 4x4 matrix, leaving the Z values correlating to their normal identity values.
+  </p>
+
+  </body>
+  
+
+</html>
